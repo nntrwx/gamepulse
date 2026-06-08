@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { Zap, Trophy, Gamepad2, Clock, Flame, Award } from 'lucide-react';
 import Image from 'next/image';
-import happyImage from '../../public/happy.png';
 
 export default function DashboardPreview() {
   const [gridCells, setGridCells] = useState<string[]>([]);
@@ -24,10 +23,10 @@ export default function DashboardPreview() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-3 md:mb-4">
         {[
-          { label: 'TOTAL XP',      value: '2,450 XP', sub: '+120 this week', icon: Zap,      color: '#38BDF8' },
-          { label: 'CURRENT LEVEL', value: 'LVL 12',   sub: '85% to LVL 13', icon: Trophy,   color: '#FFCC00' },
+          { label: 'TOTAL XP',       value: '2,450 XP', sub: '+120 this week', icon: Zap,      color: '#38BDF8' },
+          { label: 'CURRENT LEVEL', value: 'LVL 12',   sub: '85% to LVL 13', icon: Trophy,  color: '#FFCC00' },
           { label: 'GAMES TRACKED', value: '34',        sub: '+2 this month',  icon: Gamepad2, color: '#8B5CF6' },
-          { label: 'PLAYTIME',      value: '128h',      sub: '+14h this week', icon: Clock,    color: '#22C55E' },
+          { label: 'PLAYTIME',       value: '128h',       sub: '+14h this week', icon: Clock,    color: '#22C55E' },
         ].map((item, i) => (
           <div key={i} className="bg-[#110F14] border border-white/[0.06] rounded-[20px] px-4 py-3 md:px-5 md:py-4">
             <div className="flex justify-between items-center mb-1 md:mb-2">
@@ -50,7 +49,6 @@ export default function DashboardPreview() {
 
         <div
           className="w-full bg-[#110F14] px-4 pt-4 pb-4 md:col-span-2 md:px-6 md:pt-5 md:pb-5 rounded-[20px]"
-          style={{ height: undefined }}
         >
           <div className="flex justify-between items-center mb-3 md:hidden">
             <h3 className="text-[14px] font-bold">Gaming Consistency</h3>
@@ -83,21 +81,16 @@ export default function DashboardPreview() {
           </p>
         </div>
 
-        <div
-          className="md:hidden w-full bg-[#110F14] rounded-[20px] relative overflow-hidden"
-          style={{ height: '190px' }}
-        >
+        {/* Мобильная версия Companion */}
+        <div className="md:hidden w-full bg-[#110F14] rounded-[20px] relative overflow-hidden" style={{ height: '190px' }}>
           <div className="absolute top-[14px] left-[14px] right-[14px]">
             <h3 className="text-[18px] font-bold leading-none mb-[6px]">Pulse Companion</h3>
             <p className="text-[10px] font-bold text-[#CBD5E1]">
               Mood: <span className="text-[#C4B5FD]">excited!</span>
             </p>
           </div>
-          <div
-            className="absolute"
-            style={{ width: '110px', height: '124px', right: '0px', top: '18px', filter: 'drop-shadow(0px 4px 15px rgba(148,166,255,0.25))' }}
-          >
-            <Image src={happyImage} alt="Companion" fill className="object-contain" />
+          <div className="absolute" style={{ width: '110px', height: '124px', right: '0px', top: '18px', filter: 'drop-shadow(0px 4px 15px rgba(148,166,255,0.25))' }}>
+            <Image src="/happy.png" alt="Companion" fill className="object-contain" />
           </div>
           <div className="absolute bottom-[14px] left-[14px]" style={{ maxWidth: '180px' }}>
             <p className="text-[10px] font-bold text-[#CBD5E1] leading-[14px]">
@@ -108,6 +101,7 @@ export default function DashboardPreview() {
           </div>
         </div>
 
+        {/* Десктопная версия Companion */}
         <div className="hidden md:block bg-[#110F14] rounded-[20px] relative overflow-hidden" style={{ height: '300px' }}>
           <div className="absolute top-[23px] left-[23px] right-[23px]">
             <h3 className="text-[32px] font-bold leading-none mb-[10px]">Pulse Companion</h3>
@@ -115,11 +109,8 @@ export default function DashboardPreview() {
               Mood: <span className="text-[#C4B5FD]">excited!</span>
             </p>
           </div>
-          <div
-            className="absolute"
-            style={{ width: '196px', height: '222px', right: '0px', top: '31px', filter: 'drop-shadow(0px 4px 15px rgba(148,166,255,0.25))' }}
-          >
-            <Image src={happyImage} alt="Companion" fill className="object-contain" />
+          <div className="absolute" style={{ width: '196px', height: '222px', right: '0px', top: '31px', filter: 'drop-shadow(0px 4px 15px rgba(148,166,255,0.25))' }}>
+            <Image src="/happy.png" alt="Companion" fill className="object-contain" />
           </div>
           <div className="absolute bottom-[23px] left-[23px]" style={{ maxWidth: '237px' }}>
             <p className="text-[16px] font-bold text-[#CBD5E1] leading-[19px]">
@@ -132,7 +123,6 @@ export default function DashboardPreview() {
       </div>
 
       <div className="flex flex-col md:grid md:grid-cols-2 gap-3 md:gap-4">
-
         <div className="bg-[#110F14] px-4 pt-4 pb-4 md:px-6 md:pt-5 md:pb-6 rounded-[20px]">
           <h3 className="text-[14px] md:text-[22px] font-bold mb-3 md:mb-4">Recent Activity</h3>
           <div className="space-y-2 md:space-y-3">
@@ -158,7 +148,6 @@ export default function DashboardPreview() {
             <span>Hades II - 12h</span>
           </div>
         </div>
-
       </div>
     </div>
   );
