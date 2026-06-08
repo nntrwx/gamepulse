@@ -4,7 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Правильный формат — это просто слэш и название репо
   basePath: '/gamepulse',
   assetPrefix: '/gamepulse/',
 };

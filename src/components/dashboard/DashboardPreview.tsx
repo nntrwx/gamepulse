@@ -4,10 +4,10 @@ import { Zap, Trophy, Gamepad2, Clock, Flame, Award } from 'lucide-react';
 import Image from 'next/image';
 
 export default function DashboardPreview() {
-  // Указываем базовый путь для корректной работы путей на GitHub Pages
   const basePath = '/gamepulse';
-
-  const [gridCells, setGridCells] = useState<string[]>([]);
+  
+  // Правка 1: Инициализируем массив фиксированным, чтобы сервер и клиент видели одно и то же
+  const [gridCells, setGridCells] = useState<string[]>(() => Array.from({ length: 210 }, () => '#1E293B'));
 
   useEffect(() => {
     const palette = ['#1E293B', '#4C1D95', '#4C1D95', '#7C3AED', '#8B5CF6', '#C4B5FD'];
@@ -81,8 +81,9 @@ export default function DashboardPreview() {
             <h3 className="text-[18px] font-bold leading-none mb-[6px]">Pulse Companion</h3>
             <p className="text-[10px] font-bold text-[#CBD5E1]">Mood: <span className="text-[#C4B5FD]">excited!</span></p>
           </div>
-          <div className="absolute" style={{ width: '110px', height: '124px', right: '0px', top: '18px', filter: 'drop-shadow(0px 4px 15px rgba(148,166,255,0.25))' }}>
-            <Image src={`${basePath}/happy.png`} alt="Companion" fill className="object-contain" />
+          <div className="absolute right-0 top-[18px]">
+            {/* Добавлен priority, чтобы iPhone не "терял" картинку при скролле */}
+            <Image src={`${basePath}/happy.png`} alt="Companion" width={110} height={124} className="object-contain" priority />
           </div>
           <div className="absolute bottom-[14px] left-[14px]" style={{ maxWidth: '180px' }}>
             <p className="text-[10px] font-bold text-[#CBD5E1] leading-[14px]">
@@ -97,8 +98,16 @@ export default function DashboardPreview() {
             <h3 className="text-[32px] font-bold leading-none mb-[10px]">Pulse Companion</h3>
             <p className="text-[16px] font-bold text-[#CBD5E1]">Mood: <span className="text-[#C4B5FD]">excited!</span></p>
           </div>
-          <div className="absolute" style={{ width: '196px', height: '222px', right: '0px', top: '31px', filter: 'drop-shadow(0px 4px 15px rgba(148,166,255,0.25))' }}>
-            <Image src={`${basePath}/happy.png`} alt="Companion" fill className="object-contain" />
+          <div className="absolute right-0 top-[31px]">
+            <img 
+  src={`${basePath}/happy.png`} 
+  alt="Companion" 
+  style={{ 
+    width: '100%', 
+    height: '100%', 
+    objectFit: 'contain' 
+  }} 
+/>
           </div>
           <div className="absolute bottom-[23px] left-[23px]" style={{ maxWidth: '237px' }}>
             <p className="text-[16px] font-bold text-[#CBD5E1] leading-[19px]">
