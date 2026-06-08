@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 
 export const FadeIn = ({ children }: { children: React.ReactNode }) => (
   <motion.div
-    initial={{ opacity: 0, y: 30 }}
+    initial={{ opacity: 0, y: 15 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.6, ease: "easeOut" }}
+    viewport={{ once: true, amount: 0.1 }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+    style={{ willChange: 'transform, opacity' }}
   >
     {children}
   </motion.div>
