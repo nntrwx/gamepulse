@@ -51,7 +51,7 @@ export default function Pricing() {
           {tiers[billing].map((tier: any, i) => (
             <motion.div 
               key={i} 
-              whileHover={{ y: -10 }}
+              //whileHover={{ y: -10 }}
               className={`relative p-6 md:p-8 rounded-[24px] border flex flex-col items-center shadow-lg w-[250px] md:w-full ${tier.bg} ${tier.border}`}
             >
               {tier.popular && <div className="absolute top-4 right-6 px-3 py-1 bg-game-purple/55 border border-game-purple/65 rounded-full text-[10px] md:text-[13px]">POPULAR</div>}
