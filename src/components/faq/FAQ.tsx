@@ -23,7 +23,7 @@ const faqData = [
 
 export default function FAQ() {
   return (
-    <section className="max-w-[1140px] mx-auto py-20 px-4">
+    <section id="faq" className="max-w-[1140px] mx-auto py-20 px-4">
       <h2 className="text-[64px] font-bold text-white mb-6">FAQ</h2>
       
       <div className="flex flex-col">

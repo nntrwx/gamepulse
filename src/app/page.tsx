@@ -5,7 +5,7 @@ import Pricing from '@/components/pricing/Pricing';
 import FAQ from '@/components/faq/FAQ';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
-
+import { FadeIn } from '@/components/ui/MotionWrapper'; 
 
 export default function Home() {
   return (
@@ -13,7 +13,6 @@ export default function Home() {
       <Hero />
       
       <section id="dashboard" className="relative px-4 py-20 overflow-hidden">
-        
         <div 
           className="absolute w-[1156px] h-[1205px] bg-[rgba(0,53,134,0.2)] border border-white filter blur-[125px] pointer-events-none"
           style={{ 
@@ -36,11 +35,11 @@ export default function Home() {
         </div>
 
         <div className="relative z-10">
-          <DashboardPreview />
-          <Features />
-          <Pricing />
-          <FAQ />
-          <CTA />
+          <FadeIn><DashboardPreview /></FadeIn>
+          <FadeIn><Features /></FadeIn>
+          <FadeIn><Pricing /></FadeIn>
+          <FadeIn><FAQ /></FadeIn>
+          <FadeIn><CTA /></FadeIn>
           <Footer />
         </div>
       </section>

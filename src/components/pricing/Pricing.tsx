@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Check } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { FadeIn } from '../ui/MotionWrapper';
 
 const tiers = {
   monthly: [
@@ -21,7 +22,8 @@ export default function Pricing() {
   const [billing, setBilling] = useState<'monthly' | 'yearly'>('monthly');
 
   return (
-    <section className="max-w-[1140px] mx-auto py-20 px-4 text-white">
+    <section id="pricing" className="max-w-[1140px] mx-auto py-20 px-4 text-white">
+        <FadeIn>
       <div className="text-center mb-12">
         <h2 className="text-[64px] font-bold mb-0">Pricing</h2>
         <p className="text-[20px] text-game-grey">Choose Your Journey</p>
@@ -73,6 +75,7 @@ export default function Pricing() {
           </motion.div>
         ))}
       </div>
+      </FadeIn>
     </section>
   );
 }

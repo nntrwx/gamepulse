@@ -11,6 +11,12 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer base {
   body {
     @apply bg-game-dark text-white;
   }
