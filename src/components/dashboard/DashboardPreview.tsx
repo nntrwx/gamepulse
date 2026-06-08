@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Zap, Trophy, Gamepad2, Clock, Flame, Award } from 'lucide-react';
 import Image from 'next/image';
+import happyImage from '../../public/happy.png';
 
 export default function DashboardPreview() {
   const [gridCells, setGridCells] = useState<string[]>([]);
@@ -21,7 +22,6 @@ export default function DashboardPreview() {
   return (
     <div className="w-full max-w-[1200px] mx-auto p-4 md:p-7 bg-[linear-gradient(180deg,rgba(46,30,58,0.95)_0%,rgba(22,8,32,0.97)_100%)] border border-[#62697C8C] rounded-[24px] shadow-[0px_4px_20px_rgba(176,10,253,0.25)] text-white">
 
-      {/* Stat cards: 2×2 на мобиле, 4×1 на десктопе */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-3 md:mb-4">
         {[
           { label: 'TOTAL XP',      value: '2,450 XP', sub: '+120 this week', icon: Zap,      color: '#38BDF8' },
@@ -46,22 +46,18 @@ export default function DashboardPreview() {
         ))}
       </div>
 
-      {/* Middle row */}
       <div className="flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-4 mb-3 md:mb-4 md:items-start">
 
-        {/* Gaming Consistency */}
         <div
           className="w-full bg-[#110F14] px-4 pt-4 pb-4 md:col-span-2 md:px-6 md:pt-5 md:pb-5 rounded-[20px]"
           style={{ height: undefined }}
         >
-          {/* Мобайл-хедер */}
           <div className="flex justify-between items-center mb-3 md:hidden">
             <h3 className="text-[14px] font-bold">Gaming Consistency</h3>
             <div className="flex items-center gap-1 text-[12px] font-medium">
               <Flame size={14} color="#FF5900" /> 18d
             </div>
           </div>
-          {/* Десктоп-хедер — оригинальный */}
           <div className="hidden md:flex justify-between items-center mb-4">
             <h3 className="text-[22px] font-bold">Gaming Consistency</h3>
             <div className="flex items-center gap-1.5 text-[15px] font-medium">
@@ -87,8 +83,6 @@ export default function DashboardPreview() {
           </p>
         </div>
 
-        {/* Pulse Companion */}
-        {/* Мобайл */}
         <div
           className="md:hidden w-full bg-[#110F14] rounded-[20px] relative overflow-hidden"
           style={{ height: '190px' }}
@@ -103,7 +97,7 @@ export default function DashboardPreview() {
             className="absolute"
             style={{ width: '110px', height: '124px', right: '0px', top: '18px', filter: 'drop-shadow(0px 4px 15px rgba(148,166,255,0.25))' }}
           >
-            <Image src="/happy.png" alt="Companion" fill className="object-contain" />
+            <Image src={happyImage} alt="Companion" fill className="object-contain" />
           </div>
           <div className="absolute bottom-[14px] left-[14px]" style={{ maxWidth: '180px' }}>
             <p className="text-[10px] font-bold text-[#CBD5E1] leading-[14px]">
@@ -114,7 +108,6 @@ export default function DashboardPreview() {
           </div>
         </div>
 
-        {/* Десктоп — оригинальный */}
         <div className="hidden md:block bg-[#110F14] rounded-[20px] relative overflow-hidden" style={{ height: '300px' }}>
           <div className="absolute top-[23px] left-[23px] right-[23px]">
             <h3 className="text-[32px] font-bold leading-none mb-[10px]">Pulse Companion</h3>
@@ -126,7 +119,7 @@ export default function DashboardPreview() {
             className="absolute"
             style={{ width: '196px', height: '222px', right: '0px', top: '31px', filter: 'drop-shadow(0px 4px 15px rgba(148,166,255,0.25))' }}
           >
-            <Image src="/happy.png" alt="Companion" fill className="object-contain" />
+            <Image src={happyImage} alt="Companion" fill className="object-contain" />
           </div>
           <div className="absolute bottom-[23px] left-[23px]" style={{ maxWidth: '237px' }}>
             <p className="text-[16px] font-bold text-[#CBD5E1] leading-[19px]">
@@ -138,7 +131,6 @@ export default function DashboardPreview() {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-3 md:gap-4">
 
         <div className="bg-[#110F14] px-4 pt-4 pb-4 md:px-6 md:pt-5 md:pb-6 rounded-[20px]">
