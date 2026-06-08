@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-game-purple: #A78BFA;
+  --color-game-blue: #3B82F6;
+  --color-game-dark: #000000;
+  --color-game-surface: #111111;
+  --color-game-grey: #CBD5E1;
+  --font-sans: var(--font-inter);
+  --font-pixel: var(--font-pixelify);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-game-dark text-white;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .glass-card {
+    @apply bg-[--color-game-surface] border border-white/[0.08] backdrop-blur-md rounded-2xl p-6 shadow-xl transition-all duration-300;
+  }
+  
+  .glass-card:hover {
+    @apply border-game-purple/50 shadow-[0_0_20px_rgba(109,40,217,0.15)];
+  }
 }
