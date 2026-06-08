@@ -4,6 +4,9 @@ import { Zap, Trophy, Gamepad2, Clock, Flame, Award } from 'lucide-react';
 import Image from 'next/image';
 
 export default function DashboardPreview() {
+  // Указываем базовый путь для корректной работы путей на GitHub Pages
+  const basePath = '/gamepulse';
+
   const [gridCells, setGridCells] = useState<string[]>([]);
 
   useEffect(() => {
@@ -47,9 +50,7 @@ export default function DashboardPreview() {
 
       <div className="flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-4 mb-3 md:mb-4 md:items-start">
 
-        <div
-          className="w-full bg-[#110F14] px-4 pt-4 pb-4 md:col-span-2 md:px-6 md:pt-5 md:pb-5 rounded-[20px]"
-        >
+        <div className="w-full bg-[#110F14] px-4 pt-4 pb-4 md:col-span-2 md:px-6 md:pt-5 md:pb-5 rounded-[20px]">
           <div className="flex justify-between items-center mb-3 md:hidden">
             <h3 className="text-[14px] font-bold">Gaming Consistency</h3>
             <div className="flex items-center gap-1 text-[12px] font-medium">
@@ -63,14 +64,7 @@ export default function DashboardPreview() {
             </div>
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(30, 1fr)',
-              gridAutoFlow: 'row',
-              gap: '3px',
-            }}
-          >
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(30, 1fr)', gridAutoFlow: 'row', gap: '3px' }}>
             {gridCells.map((color, i) => (
               <div key={i} style={{ background: color, borderRadius: '2px', aspectRatio: '1' }} />
             ))}
@@ -85,18 +79,14 @@ export default function DashboardPreview() {
         <div className="md:hidden w-full bg-[#110F14] rounded-[20px] relative overflow-hidden" style={{ height: '190px' }}>
           <div className="absolute top-[14px] left-[14px] right-[14px]">
             <h3 className="text-[18px] font-bold leading-none mb-[6px]">Pulse Companion</h3>
-            <p className="text-[10px] font-bold text-[#CBD5E1]">
-              Mood: <span className="text-[#C4B5FD]">excited!</span>
-            </p>
+            <p className="text-[10px] font-bold text-[#CBD5E1]">Mood: <span className="text-[#C4B5FD]">excited!</span></p>
           </div>
           <div className="absolute" style={{ width: '110px', height: '124px', right: '0px', top: '18px', filter: 'drop-shadow(0px 4px 15px rgba(148,166,255,0.25))' }}>
-            <Image src="/happy.png" alt="Companion" fill className="object-contain" />
+            <Image src={`${basePath}/happy.png`} alt="Companion" fill className="object-contain" />
           </div>
           <div className="absolute bottom-[14px] left-[14px]" style={{ maxWidth: '180px' }}>
             <p className="text-[10px] font-bold text-[#CBD5E1] leading-[14px]">
-              <span className="text-white">Looking good!</span><br />
-              You gained 120 XP today.<br />
-              Only 15 XP left until LVL 13.
+              <span className="text-white">Looking good!</span><br /> You gained 120 XP today.<br /> Only 15 XP left until LVL 13.
             </p>
           </div>
         </div>
@@ -105,18 +95,14 @@ export default function DashboardPreview() {
         <div className="hidden md:block bg-[#110F14] rounded-[20px] relative overflow-hidden" style={{ height: '300px' }}>
           <div className="absolute top-[23px] left-[23px] right-[23px]">
             <h3 className="text-[32px] font-bold leading-none mb-[10px]">Pulse Companion</h3>
-            <p className="text-[16px] font-bold text-[#CBD5E1]">
-              Mood: <span className="text-[#C4B5FD]">excited!</span>
-            </p>
+            <p className="text-[16px] font-bold text-[#CBD5E1]">Mood: <span className="text-[#C4B5FD]">excited!</span></p>
           </div>
           <div className="absolute" style={{ width: '196px', height: '222px', right: '0px', top: '31px', filter: 'drop-shadow(0px 4px 15px rgba(148,166,255,0.25))' }}>
-            <Image src="/happy.png" alt="Companion" fill className="object-contain" />
+            <Image src={`${basePath}/happy.png`} alt="Companion" fill className="object-contain" />
           </div>
           <div className="absolute bottom-[23px] left-[23px]" style={{ maxWidth: '237px' }}>
             <p className="text-[16px] font-bold text-[#CBD5E1] leading-[19px]">
-              <span className="text-white">Looking good!</span><br />
-              You gained 120 XP today.<br />
-              Only 15 XP left until LVL 13.
+              <span className="text-white">Looking good!</span><br /> You gained 120 XP today.<br /> Only 15 XP left until LVL 13.
             </p>
           </div>
         </div>
@@ -127,13 +113,11 @@ export default function DashboardPreview() {
           <h3 className="text-[14px] md:text-[22px] font-bold mb-3 md:mb-4">Recent Activity</h3>
           <div className="space-y-2 md:space-y-3">
             <div className="flex items-center gap-2 md:gap-3 text-[10px] md:text-[15px] text-[#CBD5E1]">
-              <Zap size={14} color="#38BDF8" className="shrink-0 md:hidden" />
-              <Zap size={20} color="#38BDF8" className="shrink-0 hidden md:block" />
+              <Zap size={20} color="#38BDF8" className="shrink-0" />
               +25 XP from Elden Ring
             </div>
             <div className="flex items-center gap-2 md:gap-3 text-[10px] md:text-[15px] text-[#CBD5E1]">
-              <Award size={14} color="#FFCC00" className="shrink-0 md:hidden" />
-              <Award size={20} color="#FFCC00" className="shrink-0 hidden md:block" />
+              <Award size={20} color="#FFCC00" className="shrink-0" />
               Achievement Unlocked: Master Explorer
             </div>
           </div>
