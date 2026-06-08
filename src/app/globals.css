@@ -6,6 +6,10 @@
   --color-game-dark: #000000;
   --color-game-surface: #111111;
   --color-game-grey: #CBD5E1;
+  
+  --shadow-glow-purple: 0px 0px 20px rgba(167, 139, 250, 0.3);
+  --shadow-card: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  
   --font-sans: var(--font-inter);
   --font-pixel: var(--font-pixelify);
 }
@@ -29,5 +33,30 @@
   
   .glass-card:hover {
     @apply border-game-purple/50 shadow-[0_0_20px_rgba(109,40,217,0.15)];
+  }
+}
+
+@layer utilities {
+  /* Скрываем стандартный скроллбар в WebKit (Chrome, Safari, Edge) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Фон трека скроллбара */
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #0f0f12; /* Твой темный фон */
+  }
+
+  /* Ползунок скроллбара */
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4C1D95; /* Game-purple */
+    border-radius: 20px;
+    border: 2px solid #0f0f12;
+  }
+
+  /* Эффект при наведении на ползунок */
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #8B5CF6;
   }
 }

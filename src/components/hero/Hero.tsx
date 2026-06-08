@@ -21,7 +21,6 @@ export default function Hero() {
         Start Tracking Free
       </button>
 
-      <NavigationLinks />
       
     </section>
   );

@@ -1,3 +1,5 @@
+'use client';
+import GlowOrb from '@/components/ui/GlowOrb';
 import Hero from '@/components/hero/Hero';
 import DashboardPreview from '@/components/dashboard/DashboardPreview';
 import Features from '@/components/features/Features';
@@ -5,7 +7,8 @@ import Pricing from '@/components/pricing/Pricing';
 import FAQ from '@/components/faq/FAQ';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
-import { FadeIn } from '@/components/ui/MotionWrapper'; 
+import { FadeIn } from '@/components/ui/MotionWrapper';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
@@ -13,14 +16,7 @@ export default function Home() {
       <Hero />
       
       <section id="dashboard" className="relative px-4 py-20 overflow-hidden">
-        <div 
-          className="absolute w-[1156px] h-[1205px] bg-[rgba(0,53,134,0.2)] border border-white filter blur-[125px] pointer-events-none"
-          style={{ 
-            left: '60%',
-            top: '150px',
-            zIndex: 0 
-          }}
-        />
+        <GlowOrb top="150px" left="60%" />
 
         <div className="relative z-10 mb-[60px] max-w-[1200px] mx-auto">
           <h2 className="font-bold text-[64px] leading-[77px] text-white mb-[15px]">
@@ -36,6 +32,7 @@ export default function Home() {
 
         <div className="relative z-10">
           <FadeIn><DashboardPreview /></FadeIn>
+          <GlowOrb top="1200px" left="10%" />
           <FadeIn><Features /></FadeIn>
           <FadeIn><Pricing /></FadeIn>
           <FadeIn><FAQ /></FadeIn>

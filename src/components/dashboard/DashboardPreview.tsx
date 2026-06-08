@@ -1,9 +1,16 @@
+'use client';
+import { useState, useEffect } from 'react';
 import { Zap, Trophy, Gamepad2, Clock, Flame, Award } from 'lucide-react';
 import Image from 'next/image';
 
 export default function DashboardPreview() {
-  const palette = ['#1E293B', '#4C1D95', '#4C1D95', '#7C3AED', '#8B5CF6', '#C4B5FD'];
-  const gridCells = Array.from({ length: 210 }, () => palette[Math.floor(Math.random() * palette.length)]);
+  // Используем состояние для хранения цветов сетки
+  const [gridCells, setGridCells] = useState<string[]>([]);
+
+  useEffect(() => {
+    const palette = ['#1E293B', '#4C1D95', '#4C1D95', '#7C3AED', '#8B5CF6', '#C4B5FD'];
+    setGridCells(Array.from({ length: 210 }, () => palette[Math.floor(Math.random() * palette.length)]));
+  }, []);
 
   const textShadows: Record<string, string> = {
     '#38BDF8': '0px 4px 4px rgba(125,211,252,0.25)',
@@ -14,7 +21,7 @@ export default function DashboardPreview() {
 
   return (
     <div className="w-full max-w-[1200px] mx-auto p-7 bg-[linear-gradient(180deg,rgba(46,30,58,0.95)_0%,rgba(22,8,32,0.97)_100%)] border border-[#62697C8C] rounded-[24px] shadow-[0px_4px_20px_rgba(176,10,253,0.25)] text-white">
-
+      
       <div className="grid grid-cols-4 gap-4 mb-4">
         {[
           { label: 'TOTAL XP', value: '2,450 XP', sub: '+120 this week', icon: Zap, color: '#38BDF8' },
@@ -27,10 +34,7 @@ export default function DashboardPreview() {
               <span className="text-[13px] font-bold tracking-wide text-white">{item.label}</span>
               <item.icon size={28} color={item.color} />
             </div>
-            <div
-              className="text-[32px] font-bold leading-none mb-1"
-              style={{ color: item.color, textShadow: textShadows[item.color] }}
-            >
+            <div className="text-[32px] font-bold leading-none mb-1" style={{ color: item.color, textShadow: textShadows[item.color] }}>
               {item.value}
             </div>
             <div className="text-[13px] text-[#CBD5E1]">{item.sub}</div>
@@ -39,7 +43,6 @@ export default function DashboardPreview() {
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-4 items-start">
-
         <div className="col-span-2 bg-[#110F14] px-6 pt-5 pb-5 rounded-[20px]" style={{ width: '760px', height: '300px' }}>
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-[22px] font-bold">Gaming Consistency</h3>
@@ -56,6 +59,7 @@ export default function DashboardPreview() {
               gap: '3px',
             }}
           >
+            {/* Рендерим сетку только когда данные готовы */}
             {gridCells.map((color, i) => (
               <div
                 key={i}

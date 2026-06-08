@@ -11,3 +11,16 @@ export const FadeIn = ({ children }: { children: React.ReactNode }) => (
     {children}
   </motion.div>
 );
+
+export const HoverCard = ({ children, className }: { children: React.ReactNode, className?: string }) => (
+  <motion.div
+    whileHover={{ 
+      y: -5, 
+      boxShadow: "0px 0px 25px rgba(139, 92, 246, 0.2)" 
+    }}
+    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    className={className}
+  >
+    {children}
+  </motion.div>
+);
