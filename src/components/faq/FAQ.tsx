@@ -23,26 +23,25 @@ const faqData = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="max-w-[1140px] mx-auto py-20 px-4">
-      <h2 className="text-[64px] font-bold text-white mb-6">FAQ</h2>
+    <section id="faq" className="max-w-[1140px] mx-auto py-12 md:py-20 px-4">
+      <h2 className="text-[28px] md:text-[64px] font-bold text-white mb-6">FAQ</h2>
       
       <div className="flex flex-col">
         {faqData.map((item, index) => (
           <div key={index} className="flex flex-col">
-            <div className="w-full h-[1px] bg-[#3E354A] my-6"></div>
+            <div className="w-full h-[1px] bg-[#3E354A] my-4 md:my-6"></div>
             
-            <h3 className="text-[24px] mb-4">
+            <h3 className="text-[16px] md:text-[24px] mb-2 md:mb-4">
               <span className="font-pixel font-bold text-game-purple">Q: </span>
               <span className="font-normal text-white">{item.q}</span>
             </h3>
             
             <div className="w-full h-[1px] bg-[#3E354A] my-2"></div>
 
-            <p className="text-[24px] mb-10">
+            <p className="text-[16px] md:text-[24px] mb-6 md:mb-10">
               <span className="font-pixel font-bold text-[#FFEA00]">A: </span>
               <span className="font-normal text-white">{item.a}</span>
             </p>
-
           </div>
         ))}
       </div>

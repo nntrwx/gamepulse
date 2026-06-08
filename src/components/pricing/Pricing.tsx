@@ -22,59 +22,63 @@ export default function Pricing() {
   const [billing, setBilling] = useState<'monthly' | 'yearly'>('monthly');
 
   return (
-    <section id="pricing" className="max-w-[1140px] mx-auto py-20 px-4 text-white">
-        <FadeIn>
-      <div className="text-center mb-12">
-        <h2 className="text-[64px] font-bold mb-0">Pricing</h2>
-        <p className="text-[20px] text-game-grey">Choose Your Journey</p>
-      </div>
+    <section id="pricing" className="max-w-[1140px] mx-auto py-12 md:py-20 px-4 text-white">
+      <FadeIn>
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-[30px] md:text-[64px] font-bold mb-0">Pricing</h2>
+          <p className="text-[12px] md:text-[20px] text-game-grey">Choose Your Journey</p>
+        </div>
 
-      <div className="flex justify-center mb-10">
-        <div 
-          className="relative w-[346px] h-[61px] bg-[rgba(42,42,42,0.55)] border border-[rgba(77,77,77,0.65)] rounded-full flex p-1 cursor-pointer"
-          onClick={() => setBilling(billing === 'monthly' ? 'yearly' : 'monthly')}
-        >
-          <motion.div 
-            className="absolute top-1 bottom-1 w-[171px] bg-[#2A2A2A] rounded-full shadow-[0px_4px_12px_rgba(43,38,55,0.4)] border border-[rgba(94,90,105,0.65)]"
-            animate={{ x: billing === 'monthly' ? 0 : 171 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          />
-          <div className="w-1/2 flex items-center justify-center text-[24px] font-extralight z-10">Monthly</div>
-          <div className="w-1/2 flex flex-col items-center justify-center text-[24px] font-extralight z-10">
-            Yearly
-            <span className="text-[10px] text-game-grey/70 mt-[-2px]">Save 20%</span>
+        <div className="flex justify-center mb-10">
+          <div 
+            className="relative w-[280px] md:w-[346px] h-[50px] md:h-[61px] bg-[rgba(42,42,42,0.55)] border border-[rgba(77,77,77,0.65)] rounded-full flex p-1 cursor-pointer"
+            onClick={() => setBilling(billing === 'monthly' ? 'yearly' : 'monthly')}
+          >
+            <motion.div 
+              className="absolute top-1 bottom-1 w-[136px] md:w-[171px] bg-[#2A2A2A] rounded-full shadow-[0px_4px_12px_rgba(43,38,55,0.4)] border border-[rgba(94,90,105,0.65)]"
+              animate={{ x: billing === 'monthly' ? 0 : 136 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            />
+            <div className="w-1/2 flex items-center justify-center text-[14px] md:text-[24px] font-extralight z-10">Monthly</div>
+            <div className="w-1/2 flex flex-col items-center justify-center text-[14px] md:text-[24px] font-extralight z-10">
+              Yearly
+              <span className="text-[8px] md:text-[10px] text-game-grey/70 mt-[-2px]">Save 20%</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {tiers[billing].map((tier: any, i) => (
-          <motion.div 
-            key={i} 
-            whileHover={{ y: -10 }}
-            className={`relative p-8 rounded-[24px] border flex flex-col items-center shadow-lg ${tier.bg} ${tier.border}`}
-          >
-            {tier.popular && <div className="absolute top-4 right-6 px-3 py-1 bg-game-purple/55 border border-game-purple/65 rounded-full text-[13px]">POPULAR</div>}
-            <h3 className="text-[40px] font-bold mb-1 mt-4">{tier.name}</h3>
-            
-            <div className="text-center mb-8">
-              <p className="text-[20px] text-game-grey">{tier.price}</p>
-              {billing === 'yearly' && tier.total && <p className="text-[14px] text-game-purple mt-1">({tier.total})</p>}
-            </div>
-
-            <ul className="space-y-4 mb-10 w-full text-[20px]">
-              {tier.features.map((f: string, idx: number) => <li key={idx} className="flex items-start gap-2"><Check size={20} className="mt-1 flex-shrink-0 text-game-purple" /> {f}</li>)}
-            </ul>
-            
-            <button 
-              onClick={() => console.log(`Clicked ${tier.buttonText}`)} 
-              className={`w-[220px] h-[52px] mt-auto rounded-[16px] border border-white/10 text-[20px] transition-transform active:scale-95 ${tier.btn}`}
+        <div className="flex flex-col items-center md:grid md:grid-cols-3 gap-6">
+          {tiers[billing].map((tier: any, i) => (
+            <motion.div 
+              key={i} 
+              whileHover={{ y: -10 }}
+              className={`relative p-6 md:p-8 rounded-[24px] border flex flex-col items-center shadow-lg w-[250px] md:w-full ${tier.bg} ${tier.border}`}
             >
-              {tier.buttonText}
-            </button>
-          </motion.div>
-        ))}
-      </div>
+              {tier.popular && <div className="absolute top-4 right-6 px-3 py-1 bg-game-purple/55 border border-game-purple/65 rounded-full text-[10px] md:text-[13px]">POPULAR</div>}
+              <h3 className="text-[28px] md:text-[40px] font-bold mb-1 mt-2">{tier.name}</h3>
+              
+              <div className="text-center mb-6">
+                <p className="text-[14px] md:text-[20px] text-game-grey">{tier.price}</p>
+                {billing === 'yearly' && tier.total && <p className="text-[12px] md:text-[14px] text-game-purple mt-1">({tier.total})</p>}
+              </div>
+
+              <ul className="space-y-3 mb-8 w-full text-[13px] md:text-[20px]">
+                {tier.features.map((f: string, idx: number) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <Check size={16} className="mt-0.5 flex-shrink-0 text-game-purple" /> {f}
+                  </li>
+                ))}
+              </ul>
+              
+              <button 
+                onClick={() => console.log(`Clicked ${tier.buttonText}`)} 
+                className={`w-[130px] md:w-[220px] h-[35px] md:h-[52px] mt-auto rounded-[16px] border border-white/10 text-[14px] md:text-[20px] transition-transform active:scale-95 ${tier.btn}`}
+              >
+                {tier.buttonText}
+              </button>
+            </motion.div>
+          ))}
+        </div>
       </FadeIn>
     </section>
   );

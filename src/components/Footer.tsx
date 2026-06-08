@@ -6,13 +6,13 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-game-dark border-t border-[#3E354A] pt-16 pb-8 px-8">
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-game-dark border-t border-[#3E354A] pt-12 md:pt-16 pb-8 px-6 md:px-8">
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
         {/* Бренд */}
         <div className="col-span-1">
-          <h2 className="font-pixel text-[40px] text-game-purple mb-2">GAMEPULSE</h2>
-          <p className="text-game-grey text-[16px] mb-4">Track. Progress. Level Up.</p>
-          <p className="text-game-grey text-[16px] leading-relaxed max-w-[280px]">
+          <h2 className="font-pixel text-[28px] md:text-[40px] text-game-purple mb-2">GAMEPULSE</h2>
+          <p className="text-game-grey text-[14px] md:text-[16px] mb-4">Track. Progress. Level Up.</p>
+          <p className="text-game-grey text-[14px] md:text-[16px] leading-relaxed max-w-[280px]">
             GamePulse transforms gaming sessions into meaningful progress through XP, achievements, analytics, and habit tracking.
           </p>
         </div>
@@ -20,10 +20,10 @@ export default function Footer() {
         {/* Ссылки */}
         {Object.entries(footerLinks).map(([title, links]) => (
           <div key={title}>
-            <h3 className="text-white text-[24px] font-bold mb-6">{title}</h3>
-            <ul className="space-y-4">
+            <h3 className="text-white text-[18px] md:text-[24px] font-bold mb-4 md:mb-6">{title}</h3>
+            <ul className="space-y-2 md:space-y-4">
               {links.map(link => (
-                <li key={link} className="text-white text-[24px] cursor-pointer hover:text-game-purple transition-colors">
+                <li key={link} className="text-white text-[16px] md:text-[24px] cursor-pointer hover:text-game-purple transition-colors">
                   {link}
                 </li>
               ))}
@@ -32,7 +32,7 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between text-game-grey text-[16px] pt-8 border-t border-[#3E354A]">
+      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between text-game-grey text-[12px] md:text-[16px] pt-8 border-t border-[#3E354A]">
         <p>© 2026 GamePulse. All rights reserved.</p>
         <p>Built by Nicole 💜</p>
       </div>

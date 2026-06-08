@@ -18,17 +18,18 @@ export default function Home() {
       <section id="dashboard" className="relative px-4 py-20 overflow-hidden">
         <GlowOrb top="150px" left="60%" />
 
-        <div className="relative z-10 mb-[60px] max-w-[1200px] mx-auto">
-          <h2 className="font-bold text-[64px] leading-[77px] text-white mb-[15px]">
-            Your Gaming Life In
-            <br />
-            <span className="font-pixel text-[64px] text-game-purple">ONE</span> Dashboard
-          </h2>
-          
-          <p className="text-[20px] leading-[24px] text-game-grey max-w-[464px]">
-            See everything that matters without switching between multiple apps, launchers, and websites.
-          </p>
-        </div>
+        <div className="relative z-10 mb-[40px] md:mb-[60px] max-w-[1200px] mx-auto px-4 text-left md:text-left">
+  <h2 className="font-bold text-[30px] md:text-[64px] leading-tight md:leading-[77px] text-white mb-[10px] md:mb-[15px]">
+    Your Gaming Life In
+    <br className="hidden md:block" />
+    <span className="font-pixel text-[30px] md:text-[64px] text-game-purple mx-2 md:mx-0">ONE</span> 
+    Dashboard
+  </h2>
+  
+  <p className="text-[11px] md:text-[20px] leading-[13px] md:leading-[24px] text-game-grey max-w-[309px] md:max-w-[464px]  mx-auto md:mx-0">
+    See everything that matters without switching between multiple apps, launchers, and websites.
+  </p>
+</div>
 
         <div className="relative z-10">
           <FadeIn><DashboardPreview /></FadeIn>
