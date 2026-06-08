@@ -17,12 +17,18 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    @apply overflow-x-hidden;
+  }
+  
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #4C1D95 transparent;
   }
 }
 
 @layer base {
   body {
-    @apply bg-game-dark text-white;
+    @apply bg-game-dark text-white overflow-x-hidden;
   }
 }
 
@@ -37,26 +43,30 @@
 }
 
 @layer utilities {
-  /* Скрываем стандартный скроллбар в WebKit (Chrome, Safari, Edge) */
   .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
-  /* Фон трека скроллбара */
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: #0f0f12; /* Твой темный фон */
+    background: transparent;
   }
 
-  /* Ползунок скроллбара */
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #4C1D95; /* Game-purple */
+    background: #4C1D95;
     border-radius: 20px;
-    border: 2px solid #0f0f12;
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  /* Эффект при наведении на ползунок */
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #8B5CF6;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
