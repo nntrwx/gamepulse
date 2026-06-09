@@ -9,6 +9,7 @@ import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 import { FadeIn } from '@/components/ui/MotionWrapper';
 import { motion } from 'framer-motion';
+import PulseCompanion from '@/components/ui/PulseCompanion';
 
 export default function Home() {
   return (
@@ -41,6 +42,12 @@ export default function Home() {
           <Footer />
         </div>
       </section>
+
+      <div className="fixed bottom-4 right-4 z-[9999] pointer-events-none">
+        <div className="pointer-events-auto">
+          <PulseCompanion />
+        </div>
+      </div>
     </main>
   );
 }

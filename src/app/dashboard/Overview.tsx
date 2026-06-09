@@ -1,30 +1,105 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Zap, Trophy, Gamepad2, Clock, Flame, Award, TrendingUp, Calendar, ChevronRight } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Zap, Trophy, Gamepad2, Clock, Flame, Award, TrendingUp, Calendar, ChevronRight, Heart } from 'lucide-react';
 import Image from 'next/image';
 import { HoverCard, FadeIn } from '@/components/ui/MotionWrapper';
+import gsap from 'gsap';
+import idleImg from '../../../public/idle.png';
+import happyImg from '../../../public/happy.png';
+import smileImg from '../../../public/smile.png';
+import lowBatteryImg from '../../../public/lowbattery.png';
+
+const ASSETS = {
+  IDLE: idleImg,
+  HAPPY: happyImg,
+  SMILE: smileImg,
+  LOW: lowBatteryImg,
+};
 
 interface OverviewProps {
   onNavigate: (tab: string) => void;
 }
 
 export default function Overview({ onNavigate }: OverviewProps) {
-  const basePath = '/gamepulse';
-  
+  const containerRef = useRef<HTMLDivElement>(null);
+  const characterRef = useRef<HTMLDivElement>(null);
   const [gridCells, setGridCells] = useState<string[]>(() => Array.from({ length: 210 }, () => '#1E293B'));
-
-  const emotions = ['happy.png', 'smile.png', 'idle.png', 'lowbattery.png'];
-  const [currentEmotion, setCurrentEmotion] = useState(emotions[0]);
+  const [currentAsset, setCurrentAsset] = useState<any>(ASSETS.IDLE);
+  const [status, setStatus] = useState('LIVE');
+  const [isLoved, setIsLoved] = useState(false);
 
   useEffect(() => {
     const palette = ['#1E293B', '#4C1D95', '#4C1D95', '#7C3AED', '#8B5CF6', '#C4B5FD'];
     setGridCells(Array.from({ length: 210 }, () => palette[Math.floor(Math.random() * palette.length)]));
+
+    if (characterRef.current) {
+      gsap.to(characterRef.current, {
+        y: -8,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+    }
   }, []);
 
-  const changeEmotion = () => {
-    const nextIndex = (emotions.indexOf(currentEmotion) + 1) % emotions.length;
-    setCurrentEmotion(emotions[nextIndex]);
+  const handleCompanionClick = () => {
+    const emotions = [ASSETS.IDLE, ASSETS.SMILE, ASSETS.LOW];
+    const filteredEmotions = emotions.filter(e => e !== currentAsset);
+    const randomAsset = filteredEmotions[Math.floor(Math.random() * filteredEmotions.length)];
+    setCurrentAsset(randomAsset);
+    setStatus('CURIOUS');
+    setIsLoved(false);
+    
+    if (characterRef.current) {
+      gsap.fromTo(characterRef.current, { rotation: -5 }, { rotation: 5, duration: 0.15, repeat: 3, yoyo: true, ease: "power1.inOut", onComplete: () => {
+        gsap.to(characterRef.current, { rotation: 0, duration: 0.2 });
+      }});
+    }
+
+    setTimeout(() => {
+      setStatus('LIVE');
+    }, 1500);
+  };
+
+  const handlePetCompanion = (e: React.MouseEvent) => {
+    e.stopPropagation(); 
+    setCurrentAsset(ASSETS.HAPPY);
+    setStatus('LOVED!');
+    setIsLoved(true);
+    
+    if (characterRef.current) {
+      const tl = gsap.timeline();
+      tl.to(characterRef.current, { y: -30, scale: 1.15, duration: 0.3, ease: "back.out(2)" })
+        .to(characterRef.current, { y: 0, scale: 1, duration: 0.6, ease: "bounce.out" });
+
+      for(let i = 0; i < 6; i++) {
+        const particle = document.createElement('div');
+        particle.className = "absolute pointer-events-none z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2";
+        particle.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="#EC4899" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+        containerRef.current?.appendChild(particle);
+        
+        const angle = (i / 6) * Math.PI * 2;
+        const velocity = 80 + Math.random() * 40;
+        
+        gsap.to(particle, { 
+          x: Math.cos(angle) * velocity, 
+          y: Math.sin(angle) * velocity - 40, 
+          opacity: 0, 
+          scale: 0.5,
+          duration: 1.2, 
+          ease: "power2.out",
+          onComplete: () => particle.remove() 
+        });
+      }
+    }
+
+    setTimeout(() => {
+      setCurrentAsset(ASSETS.IDLE);
+      setStatus('LIVE');
+      setIsLoved(false);
+    }, 2000);
   };
 
   const stats = [
@@ -185,25 +260,42 @@ export default function Overview({ onNavigate }: OverviewProps) {
 
         <FadeIn>
           <div 
-            onClick={changeEmotion}
+            ref={containerRef}
+            onClick={handleCompanionClick}
             className="bg-gradient-to-b from-[#1A181E] to-[#110F14] border border-white/[0.06] rounded-[24px] h-full flex items-center justify-center relative overflow-hidden group min-h-[300px] cursor-pointer active:scale-95 transition-transform"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_70%)] from-purple-500/20 opacity-50 group-hover:opacity-100 transition-opacity" />
 
             <div className="absolute w-[180px] h-[180px] bg-purple-600/20 blur-[60px] rounded-full animate-pulse" />
 
-            <Image 
-              src={`${basePath}/${currentEmotion}`} 
-              alt="Companion" 
-              width={223} 
-              height={252} 
-              className="object-contain relative z-10 transform group-hover:scale-110 transition-all duration-700 ease-out"
-              priority
-            />
+            <button 
+              onClick={handlePetCompanion}
+              className="absolute top-4 left-4 z-20 p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all group/pet active:scale-90"
+              title="Pet Pulse"
+            >
+              <Heart 
+                size={18} 
+                className="text-pink-500 fill-pink-500/10 group-hover/pet:fill-pink-500 group-hover/pet:scale-110 transition-all duration-300" 
+              />
+            </button>
+
+            <div ref={characterRef} className="relative z-10">
+              <Image 
+                src={currentAsset} 
+                alt="Companion" 
+                width={223} 
+                height={252} 
+                className="object-contain transform group-hover:scale-105 transition-all duration-700 ease-out"
+                priority
+              />
+            </div>
 
             <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-xl">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" />
-              <span className="text-[10px] font-bold text-white/80 tracking-widest uppercase">Live</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[10px] font-bold text-white/80 tracking-widest uppercase">{status}</span>
+                {isLoved && <Heart size={10} className="text-pink-500 fill-pink-500 animate-pulse" />}
+              </div>
             </div>
           </div>
         </FadeIn>
