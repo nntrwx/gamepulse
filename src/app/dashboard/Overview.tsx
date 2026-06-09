@@ -14,10 +14,18 @@ export default function Overview({ onNavigate }: OverviewProps) {
   
   const [gridCells, setGridCells] = useState<string[]>(() => Array.from({ length: 210 }, () => '#1E293B'));
 
+  const emotions = ['happy.png', 'smile.png', 'idle.png', 'lowbattery.png'];
+  const [currentEmotion, setCurrentEmotion] = useState(emotions[0]);
+
   useEffect(() => {
     const palette = ['#1E293B', '#4C1D95', '#4C1D95', '#7C3AED', '#8B5CF6', '#C4B5FD'];
     setGridCells(Array.from({ length: 210 }, () => palette[Math.floor(Math.random() * palette.length)]));
   }, []);
+
+  const changeEmotion = () => {
+    const nextIndex = (emotions.indexOf(currentEmotion) + 1) % emotions.length;
+    setCurrentEmotion(emotions[nextIndex]);
+  };
 
   const stats = [
     { label: 'TOTAL XP', value: '2,450', unit: 'XP', sub: '+120 this week', icon: Zap, color: '#38BDF8', trend: '+5.2%' },
@@ -176,16 +184,19 @@ export default function Overview({ onNavigate }: OverviewProps) {
         </FadeIn>
 
         <FadeIn>
-          <div className="bg-gradient-to-b from-[#1A181E] to-[#110F14] border border-white/[0.06] rounded-[24px] h-full flex items-center justify-center relative overflow-hidden group min-h-[300px]">
+          <div 
+            onClick={changeEmotion}
+            className="bg-gradient-to-b from-[#1A181E] to-[#110F14] border border-white/[0.06] rounded-[24px] h-full flex items-center justify-center relative overflow-hidden group min-h-[300px] cursor-pointer active:scale-95 transition-transform"
+          >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_70%)] from-purple-500/20 opacity-50 group-hover:opacity-100 transition-opacity" />
 
             <div className="absolute w-[180px] h-[180px] bg-purple-600/20 blur-[60px] rounded-full animate-pulse" />
 
             <Image 
-              src={`${basePath}/happy.png`} 
+              src={`${basePath}/${currentEmotion}`} 
               alt="Companion" 
-              width={220} 
-              height={220} 
+              width={223} 
+              height={252} 
               className="object-contain relative z-10 transform group-hover:scale-110 transition-all duration-700 ease-out"
               priority
             />
