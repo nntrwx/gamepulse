@@ -5,6 +5,8 @@ import { Plus } from 'lucide-react';
 import Link from 'next/link';
 import Overview from './Overview';
 import Games from './Games';
+import Achievements from './Achievements';
+import Analytics from './Analytics';
 
 export default function RealDashboard() {
   const [activeTab, setActiveTab] = useState('Overview');
@@ -47,6 +49,10 @@ export default function RealDashboard() {
           <Overview onNavigate={setActiveTab} />
         ) : activeTab === 'Games' ? (
           <Games />
+        ) : activeTab === 'Achievements' ? (
+          <Achievements />
+        ) : activeTab === 'Analytics' ? (
+          <Analytics />
         ) : (
           <div className="flex flex-col items-center justify-center h-[60vh] text-center">
             <div className="w-20 h-20 bg-white/[0.02] border border-white/[0.05] rounded-3xl flex items-center justify-center mb-6">

@@ -1,12 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 
-export const FadeIn = ({ children, className }: { children: React.ReactNode, className?: string }) => (
+export const FadeIn = ({ children, className, delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 15 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.1 }}
-    transition={{ duration: 0.5, ease: "easeOut" }}
+    transition={{ duration: 0.5, ease: "easeOut", delay }}
     style={{ willChange: 'transform, opacity' }}
     className={className}
   >
