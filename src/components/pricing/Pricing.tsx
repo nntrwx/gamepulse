@@ -7,12 +7,12 @@ import { FadeIn } from '../ui/MotionWrapper';
 
 const tiers = {
   monthly: [
-    { name: 'Free', price: '€0', features: ['Basic Dashboard', 'XP Tracking', 'Activity Feed', 'Up to 5 Games', 'Basic Statistics'], buttonText: 'Start Free', bg: 'bg-[#141B2D]', border: 'border-[rgba(255,255,255,0.06)]', btn: 'bg-[rgba(139,92,246,0.55)]' },
+    { name: 'Free', price: '€0', features: ['Basic Dashboard', 'XP Tracking', 'Activity Feed', 'Up to 5 Games', 'Basic Statistics'], buttonText: 'Start Free', bg: 'bg-[#141B2D]', border: 'border-[rgba(255,255,255,0.06)]', btn: 'bg-[#8B5CF6/55]' },
     { name: 'Pro', price: '€9/month', features: ['Everything in Free', 'Unlimited Games', 'Advanced Analytics', 'Achievement Tracking', 'Activity Heatmaps', 'Cloud Sync'], buttonText: 'Go Pro', popular: true, bg: 'bg-gradient-to-b from-[#1D2340] to-[#141B2D]', border: 'border-[rgba(139,92,246,0.06)]', btn: 'bg-gradient-to-b from-[rgba(139,92,246,0.55)] to-[rgba(167,139,250,0.55)]' },
     { name: 'Elite', price: '€19/month', features: ['Everything in Pro', 'Early Access Features', 'Premium Themes', 'AI Insights', 'Priority Support'], buttonText: 'Become Elite', bg: 'bg-gradient-to-b from-[#13253D] to-[#141B2D]', border: 'border-[rgba(56,189,248,0.06)]', btn: 'bg-gradient-to-b from-[rgba(56,189,248,0.55)] to-[rgba(125,211,252,0.55)]' },
   ],
   yearly: [
-    { name: 'Free', price: '€0', features: ['Basic Dashboard', 'XP Tracking', 'Activity Feed', 'Up to 5 Games', 'Basic Statistics'], buttonText: 'Start Free', bg: 'bg-[#141B2D]', border: 'border-[rgba(255,255,255,0.06)]', btn: 'bg-[rgba(139,92,246,0.55)]' },
+    { name: 'Free', price: '€0', features: ['Basic Dashboard', 'XP Tracking', 'Activity Feed', 'Up to 5 Games', 'Basic Statistics'], buttonText: 'Start Free', bg: 'bg-[#141B2D]', border: 'border-[rgba(255,255,255,0.06)]', btn: 'bg-[#8B5CF6/55]' },
     { name: 'Pro', price: '€7/month', total: '€84 per year', features: ['Everything in Free', 'Unlimited Games', 'Advanced Analytics', 'Achievement Tracking', 'Activity Heatmaps', 'Cloud Sync'], buttonText: 'Go Pro', popular: true, bg: 'bg-gradient-to-b from-[#1D2340] to-[#141B2D]', border: 'border-[rgba(139,92,246,0.06)]', btn: 'bg-gradient-to-b from-[rgba(139,92,246,0.55)] to-[rgba(167,139,250,0.55)]' },
     { name: 'Elite', price: '€15/month', total: '€180 per year', features: ['Everything in Pro', 'Early Access Features', 'Premium Themes', 'AI Insights', 'Priority Support'], buttonText: 'Become Elite', bg: 'bg-gradient-to-b from-[#13253D] to-[#141B2D]', border: 'border-[rgba(56,189,248,0.06)]', btn: 'bg-gradient-to-b from-[rgba(56,189,248,0.55)] to-[rgba(125,211,252,0.55)]' },
   ]

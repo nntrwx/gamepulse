@@ -20,7 +20,6 @@ import {
 } from 'lucide-react';
 import { FadeIn, HoverCard } from '@/components/ui/MotionWrapper';
 
-// Mock data for professional look
 const METRICS = [
   { label: 'Active Sessions', value: '1,284', trend: '+12.5%', isPositive: true, icon: Activity, color: '#8B5CF6' },
   { label: 'Avg. Playtime', value: '4.2h', trend: '+5.2%', isPositive: true, icon: Clock, color: '#38BDF8' },
@@ -43,10 +42,9 @@ const PURPLE_PALETTE = ['#4C1D95', '#7C3AED', '#8B5CF6', '#C4B5FD'];
 export default function Analytics() {
   const [timeRange, setTimeRange] = useState('Last 7 Days');
 
-  // SVG Line Path Calculation
   const generatePath = () => {
-    const width = 100; // Percent
-    const height = 100; // Percent
+    const width = 100;
+    const height = 100;
     const points = WEEKLY_DATA.map((d, i) => {
       const x = (i / (WEEKLY_DATA.length - 1)) * 100;
       const y = 100 - d.value;
@@ -57,7 +55,6 @@ export default function Analytics() {
 
   return (
     <div className="space-y-8 pb-12">
-      {/* Header Actions */}
       <FadeIn>
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-[#110F14] border border-white/[0.06] p-4 rounded-[24px]">
           <div className="flex gap-2 p-1 bg-white/[0.03] rounded-xl border border-white/[0.05]">
@@ -86,7 +83,6 @@ export default function Analytics() {
         </div>
       </FadeIn>
 
-      {/* Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {METRICS.map((metric, i) => (
           <FadeIn key={i} delay={i * 0.1}>
@@ -120,13 +116,10 @@ export default function Analytics() {
           </FadeIn>
         ))}
       </div>
-
-      {/* Main Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Engagement Chart */}
-        <FadeIn className="lg:col-span-2">
-          <div className="bg-[#110F14] border border-white/[0.06] rounded-[32px] p-8 h-full">
-            <div className="flex justify-between items-center mb-10">
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <FadeIn className="lg:col-span-2">
+    <div className="bg-[#110F14] border border-white/[0.06] rounded-[32px] p-5 md:p-8 h-full">
+      <div className="flex justify-between items-center mb-10">
               <div>
                 <h3 className="text-xl font-bold">Engagement Analysis</h3>
                 <p className="text-gray-500 text-sm">Real-time session intensity tracking</p>
@@ -144,14 +137,12 @@ export default function Analytics() {
             </div>
 
             <div className="h-64 relative group/chart">
-              {/* Grid Lines */}
               <div className="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="w-full border-t border-white/10" />
                 ))}
               </div>
 
-              {/* Line Chart SVG */}
               <svg 
                 className="absolute inset-0 w-full h-full overflow-visible" 
                 viewBox="0 0 100 100"
@@ -164,7 +155,6 @@ export default function Analytics() {
                   </linearGradient>
                 </defs>
                 
-                {/* Area under the line (Smooth) */}
                 <path
                   fill="url(#chartGradient)"
                   stroke="none"
@@ -178,7 +168,6 @@ export default function Analytics() {
                   }).join(' ')} L 100,100 Z`}
                 />
 
-                {/* Main line (Smooth Curve) */}
                 <path
                   fill="none"
                   stroke="#8B5CF6"
@@ -197,7 +186,6 @@ export default function Analytics() {
                 />
               </svg>
 
-              {/* HTML Overlay for Dots (to prevent distortion) */}
               <div className="absolute inset-0 pointer-events-none">
                 {WEEKLY_DATA.map((d, i) => {
                   const x = (i / (WEEKLY_DATA.length - 1)) * 100;
@@ -212,7 +200,6 @@ export default function Analytics() {
                 })}
               </div>
 
-              {/* X-Axis Labels */}
               <div className="absolute -bottom-8 w-full flex justify-between px-1">
                 {WEEKLY_DATA.map((d, i) => (
                   <span key={i} className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{d.day}</span>
@@ -222,7 +209,6 @@ export default function Analytics() {
           </div>
         </FadeIn>
 
-        {/* Platform Breakdown */}
         <FadeIn>
           <div className="bg-[#110F14] border border-white/[0.06] rounded-[32px] p-8 h-full flex flex-col">
             <h3 className="text-xl font-bold mb-6">Platform Distribution</h3>
@@ -265,7 +251,6 @@ export default function Analytics() {
         </FadeIn>
       </div>
 
-      {/* Bottom Grid: Peak Times & Top Genres */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <FadeIn>
           <div className="bg-[#110F14] border border-white/[0.06] rounded-[32px] p-8">
@@ -275,7 +260,6 @@ export default function Analytics() {
             <div className="grid grid-cols-6 gap-2">
               {Array.from({ length: 24 }).map((_, i) => {
                 const intensity = Math.random();
-                // Use purple palette based on intensity
                 const colorIdx = intensity > 0.8 ? 3 : intensity > 0.5 ? 2 : intensity > 0.2 ? 1 : 0;
                 const color = intensity > 0.1 ? PURPLE_PALETTE[colorIdx] : '#1E293B';
                 

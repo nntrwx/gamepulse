@@ -101,7 +101,6 @@ export default function Achievements() {
 
   return (
     <div className="space-y-8 pb-12">
-      {/* Stats Overview */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, i) => (
           <FadeIn key={i} delay={i * 0.1}>
@@ -123,7 +122,6 @@ export default function Achievements() {
         ))}
       </div>
 
-      {/* Controls */}
       <FadeIn>
         <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-[#110F14] border border-white/[0.06] p-4 rounded-[24px]">
           <div className="relative w-full md:w-96 group">
@@ -155,7 +153,6 @@ export default function Achievements() {
         </div>
       </FadeIn>
 
-      {/* Achievement Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredAchievements.map((ach, i) => (
           <FadeIn key={ach.id} delay={i * 0.05}>

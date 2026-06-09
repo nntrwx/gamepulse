@@ -28,7 +28,6 @@ export default function Overview({ onNavigate }: OverviewProps) {
 
   return (
     <div className="space-y-8">
-      {/* Stats Grid */}
       <FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((item, i) => (
@@ -66,20 +65,20 @@ export default function Overview({ onNavigate }: OverviewProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <FadeIn className="md:col-span-2 lg:col-span-2">
-          <div className="bg-[#110F14] border border-white/[0.06] rounded-[24px] p-6 h-full flex flex-col justify-between">
-            <div className="flex justify-between items-center mb-4">
+          <div className="bg-[#110F14] border border-white/[0.06] rounded-[24px] p-5 md:p-6 h-full flex flex-col justify-between">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
               <div>
                 <h3 className="text-xl font-bold mb-0.5">Gaming Consistency</h3>
                 <p className="text-gray-400 text-xs">Activity tracking (last 30 weeks)</p>
               </div>
               <div className="flex items-center gap-2 bg-[#1A181E] px-3 py-1.5 rounded-xl border border-white/[0.05]">
                 <Flame size={16} color="#FF5900" className="animate-pulse" />
-                <span className="font-bold text-sm">18 Day Streak</span>
+                <span className="font-bold text-sm text-orange-500">18 Day Streak</span>
               </div>
             </div>
 
-            <div className="my-2">
-              <div className="grid grid-cols-[repeat(30,1fr)] gap-[3px] w-full">
+            <div className="my-2 overflow-x-auto scrollbar-hide">
+              <div className="grid grid-cols-[repeat(30,1fr)] gap-[3px] min-w-[500px] md:min-w-0 w-full">
                 {gridCells.map((color, i) => (
                   <div 
                     key={i} 
@@ -92,7 +91,7 @@ export default function Overview({ onNavigate }: OverviewProps) {
                 ))}
               </div>
               
-              <div className="flex justify-between mt-3 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+              <div className="flex justify-between mt-3 text-[10px] text-gray-500 font-bold uppercase tracking-widest min-w-[500px] md:min-w-0">
                 <span>Less Active</span>
                 <div className="flex gap-[3px]">
                   {['#1E293B', '#4C1D95', '#7C3AED', '#8B5CF6', '#C4B5FD'].map(c => (
@@ -103,7 +102,7 @@ export default function Overview({ onNavigate }: OverviewProps) {
               </div>
             </div>
 
-            <div className="flex gap-8 mt-4 pt-4 border-t border-white/[0.05]">
+            <div className="flex gap-8 mt-6 pt-4 border-t border-white/[0.05]">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-purple-500/10 text-purple-400">
                   <TrendingUp size={16} />
@@ -127,7 +126,7 @@ export default function Overview({ onNavigate }: OverviewProps) {
         </FadeIn>
 
         <FadeIn>
-          <div className="bg-[#110F14] border border-white/[0.06] rounded-[24px] p-6 h-full flex flex-col">
+          <div className="bg-[#110F14] border border-white/[0.06] rounded-[24px] p-5 md:p-6 h-full flex flex-col">
             <div className="flex items-center gap-2 mb-6">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               <h3 className="text-xl font-bold">Pulse Insights</h3>
@@ -177,16 +176,16 @@ export default function Overview({ onNavigate }: OverviewProps) {
         </FadeIn>
 
         <FadeIn>
-          <div className="bg-gradient-to-b from-[#1A181E] to-[#110F14] border border-white/[0.06] rounded-[24px] h-full flex items-center justify-center relative overflow-hidden group min-h-[320px]">
+          <div className="bg-gradient-to-b from-[#1A181E] to-[#110F14] border border-white/[0.06] rounded-[24px] h-full flex items-center justify-center relative overflow-hidden group min-h-[300px]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_70%)] from-purple-500/20 opacity-50 group-hover:opacity-100 transition-opacity" />
 
-            <div className="absolute w-[200px] h-[200px] bg-purple-600/20 blur-[80px] rounded-full animate-pulse" />
+            <div className="absolute w-[180px] h-[180px] bg-purple-600/20 blur-[60px] rounded-full animate-pulse" />
 
             <Image 
               src={`${basePath}/happy.png`} 
               alt="Companion" 
-              width={260} 
-              height={260} 
+              width={220} 
+              height={220} 
               className="object-contain relative z-10 transform group-hover:scale-110 transition-all duration-700 ease-out"
               priority
             />
@@ -201,12 +200,12 @@ export default function Overview({ onNavigate }: OverviewProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <FadeIn>
-          <div className="bg-[#110F14] border border-white/[0.06] rounded-[24px] p-8">
+          <div className="bg-[#110F14] border border-white/[0.06] rounded-[24px] p-6 md:p-8">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold">Recent Activity</h3>
+              <h3 className="text-xl md:text-2xl font-bold">Recent Activity</h3>
               <button 
                 onClick={() => onNavigate('Achievements')}
-                className="text-purple-400 text-sm font-bold hover:underline"
+                className="text-purple-400 text-xs md:text-sm font-bold hover:underline"
               >
                 View All
               </button>
@@ -219,14 +218,14 @@ export default function Overview({ onNavigate }: OverviewProps) {
                 { icon: Trophy, color: '#FFCC00', text: 'Reached Level 12', time: '2 days ago' },
               ].map((activity, i) => (
                 <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] transition-colors cursor-pointer group">
-                  <div className="p-2 rounded-xl bg-white/[0.03] group-hover:scale-110 transition-transform">
+                  <div className="p-2 rounded-xl bg-white/[0.03] group-hover:scale-110 transition-transform shrink-0">
                     <activity.icon size={20} color={activity.color} />
                   </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-gray-200">{activity.text}</p>
-                    <p className="text-xs text-gray-500 mt-0.5">{activity.time}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-gray-200 text-sm md:text-base truncate">{activity.text}</p>
+                    <p className="text-[10px] md:text-xs text-gray-500 mt-0.5">{activity.time}</p>
                   </div>
-                  <ChevronRight size={16} className="text-gray-600 group-hover:text-gray-400 transition-colors" />
+                  <ChevronRight size={16} className="text-gray-600 group-hover:text-gray-400 transition-colors shrink-0" />
                 </div>
               ))}
             </div>
@@ -234,12 +233,12 @@ export default function Overview({ onNavigate }: OverviewProps) {
         </FadeIn>
 
         <FadeIn>
-          <div className="bg-[#110F14] border border-white/[0.06] rounded-[24px] p-8">
+          <div className="bg-[#110F14] border border-white/[0.06] rounded-[24px] p-6 md:p-8">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold">Top Games</h3>
+              <h3 className="text-xl md:text-2xl font-bold">Top Games</h3>
               <button 
                 onClick={() => onNavigate('Games')}
-                className="text-purple-400 text-sm font-bold hover:underline"
+                className="text-purple-400 text-xs md:text-sm font-bold hover:underline"
               >
                 Manage Games
               </button>
@@ -251,20 +250,20 @@ export default function Overview({ onNavigate }: OverviewProps) {
                 { name: 'Cyberpunk 2077', hours: '21h', progress: 40, color: '#FFCC00' },
                 { name: 'Hades II', hours: '12h', progress: 15, color: '#22C55E' },
               ].map((game, i) => (
-                <div key={i} className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-purple-500/30 transition-all cursor-pointer group">
+                <div key={i} className="p-4 md:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-purple-500/30 transition-all cursor-pointer group">
                   <div className="flex justify-between items-start mb-4">
-                    <p className="font-bold text-lg group-hover:text-purple-400 transition-colors">{game.name}</p>
-                    <p className="text-gray-400 font-bold">{game.hours}</p>
+                    <p className="font-bold text-base md:text-lg group-hover:text-purple-400 transition-colors truncate pr-2">{game.name}</p>
+                    <p className="text-gray-400 font-bold text-sm shrink-0">{game.hours}</p>
                   </div>
-                  <div className="h-2 w-full bg-white/[0.05] rounded-full overflow-hidden">
+                  <div className="h-1.5 md:h-2 w-full bg-white/[0.05] rounded-full overflow-hidden">
                     <div 
                       className="h-full rounded-full transition-all duration-1000"
                       style={{ width: `${game.progress}%`, backgroundColor: game.color, boxShadow: `0 0 10px ${game.color}44` }}
                     />
                   </div>
                   <div className="flex justify-between mt-2">
-                    <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Progress</span>
-                    <span className="text-[10px] text-gray-400 font-bold">{game.progress}%</span>
+                    <span className="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Progress</span>
+                    <span className="text-[9px] text-gray-400 font-bold">{game.progress}%</span>
                   </div>
                 </div>
               ))}
