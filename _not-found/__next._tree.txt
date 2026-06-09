@@ -1,2 +1,2 @@
-:HL["/gamepulse/_next/static/chunks/0vdy1zd63q8c-.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"FGRUXvUEIAzwPbKL5fVbj"}
+:HL["/gamepulse/_next/static/chunks/3-kujnzfc3i5d.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"4cZr_rFPACKkGj5U7daF-"}

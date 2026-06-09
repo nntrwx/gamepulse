@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
-2:I[47257,["/gamepulse/_next/static/chunks/1ibn0j9whxsgg.js","/gamepulse/_next/static/chunks/2kg5a0u84fqj0.js","/gamepulse/_next/static/chunks/14mrh2-p_w84d.js"],"ClientPageRoot"]
-3:I[30257,["/gamepulse/_next/static/chunks/1ibn0j9whxsgg.js","/gamepulse/_next/static/chunks/2kg5a0u84fqj0.js","/gamepulse/_next/static/chunks/14mrh2-p_w84d.js","/gamepulse/_next/static/chunks/2q1cyx8_0zcxv.js","/gamepulse/_next/static/chunks/2rqup4z2bgi0_.js"],"default"]
-6:I[97367,["/gamepulse/_next/static/chunks/1ibn0j9whxsgg.js","/gamepulse/_next/static/chunks/2kg5a0u84fqj0.js","/gamepulse/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+2:I[47257,["/gamepulse/_next/static/chunks/3dmal37iabrx7.js","/gamepulse/_next/static/chunks/2kg5a0u84fqj0.js","/gamepulse/_next/static/chunks/14mrh2-p_w84d.js"],"ClientPageRoot"]
+3:I[30257,["/gamepulse/_next/static/chunks/3dmal37iabrx7.js","/gamepulse/_next/static/chunks/2kg5a0u84fqj0.js","/gamepulse/_next/static/chunks/14mrh2-p_w84d.js","/gamepulse/_next/static/chunks/2q1cyx8_0zcxv.js","/gamepulse/_next/static/chunks/1k5fv3zz0z5hk.js","/gamepulse/_next/static/chunks/0ml8x1ftncb4a.js"],"default"]
+6:I[97367,["/gamepulse/_next/static/chunks/3dmal37iabrx7.js","/gamepulse/_next/static/chunks/2kg5a0u84fqj0.js","/gamepulse/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/gamepulse/_next/static/chunks/2rqup4z2bgi0_.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"FGRUXvUEIAzwPbKL5fVbj"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/gamepulse/_next/static/chunks/1k5fv3zz0z5hk.js","async":true}],["$","script","script-1",{"src":"/gamepulse/_next/static/chunks/0ml8x1ftncb4a.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"4cZr_rFPACKkGj5U7daF-"}
 4:{}
 5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
 8:null
