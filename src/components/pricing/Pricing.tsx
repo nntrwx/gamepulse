@@ -36,7 +36,7 @@ export default function Pricing() {
           >
             <motion.div 
               className="absolute top-1 bottom-1 w-[136px] md:w-[171px] bg-[#2A2A2A] rounded-full shadow-[0px_4px_12px_rgba(43,38,55,0.4)] border border-[rgba(94,90,105,0.65)]"
-              animate={{ x: billing === 'monthly' ? 0 : 136 }}
+              animate={{ x: billing === 'monthly' ? 0 : (typeof window !== 'undefined' && window.innerWidth >= 768 ? 168 : 136) }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
             <div className="w-1/2 flex items-center justify-center text-[14px] md:text-[24px] font-extralight z-10">Monthly</div>

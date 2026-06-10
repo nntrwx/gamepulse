@@ -43,7 +43,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="fixed bottom-4 right-4 z-[9999] pointer-events-none">
+      <div className="fixed bottom-4 right-4 z-[9999] pointer-events-none hidden md:block">
         <div className="pointer-events-auto">
           <PulseCompanion />
         </div>

@@ -6,7 +6,6 @@ import Image from 'next/image';
 export default function DashboardPreview() {
   const basePath = '/gamepulse';
   
-  // Правка 1: Инициализируем массив фиксированным, чтобы сервер и клиент видели одно и то же
   const [gridCells, setGridCells] = useState<string[]>(() => Array.from({ length: 210 }, () => '#1E293B'));
 
   useEffect(() => {
@@ -75,7 +74,6 @@ export default function DashboardPreview() {
           </p>
         </div>
 
-        {/* Мобильная версия Companion */}
         <div className="md:hidden w-full bg-[#110F14] rounded-[20px] relative overflow-hidden" style={{ height: '190px' }}>
           <div className="absolute top-[14px] left-[14px] right-[14px]">
             <h3 className="text-[18px] font-bold leading-none mb-[6px]">Pulse Companion</h3>
@@ -92,19 +90,18 @@ export default function DashboardPreview() {
           </div>
         </div>
 
-        {/* Десктопная версия Companion */}
         <div className="hidden md:block bg-[#110F14] rounded-[20px] relative overflow-hidden" style={{ height: '300px' }}>
           <div className="absolute top-[23px] left-[23px] right-[23px]">
             <h3 className="text-[32px] font-bold leading-none mb-[10px]">Pulse Companion</h3>
             <p className="text-[16px] font-bold text-[#CBD5E1]">Mood: <span className="text-[#C4B5FD]">excited!</span></p>
           </div>
-          <div className="absolute right-0 top-[31px]">
+          <div className="absolute right-[-20px] top-[55px]">
             <img 
   src={`${basePath}/happy.png`} 
   alt="Companion" 
   style={{ 
-    width: '100%', 
-    height: '100%', 
+    width: '90%', 
+    height: '90%', 
     objectFit: 'contain' 
   }} 
 />
